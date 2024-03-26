@@ -48,6 +48,6 @@ public class BookService {
     }
 
     public List<Book> getAll() {
-        return bookRepository.getAll();
+        return bookRepository.findAll();
     }
 }

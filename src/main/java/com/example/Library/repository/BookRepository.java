@@ -14,8 +14,6 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
 
     public Book getById(Integer id);
     public Book save(Book book);
-    public Book updateBook(Integer id);
-
-    public List<Book> getAll();
+    public List<Book> findAll();
 
 }

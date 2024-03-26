@@ -5,7 +5,7 @@ CREATE DATABASE IF NOT EXISTS library;
 USE library;
 
 -- Create tables
-CREATE TABLE IF NOT EXISTS Book (
+CREATE TABLE IF NOT EXISTS book (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255),
     author VARCHAR(255),
@@ -13,5 +13,5 @@ CREATE TABLE IF NOT EXISTS Book (
     );
 
 -- Insert initial data
-INSERT INTO Book (title, author, description) VALUES ('Book 1', 'Author 1', 'Description 1');
-INSERT INTO Book (title, author, description) VALUES ('Book 2', 'Author 2', 'Description 2');
+INSERT INTO book (title, author, description) VALUES ('Book 1', 'Author 1', 'Description 1');
+INSERT INTO book (title, author, description) VALUES ('Book 2', 'Author 2', 'Description 2');
