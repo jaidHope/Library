@@ -12,9 +12,8 @@ public class Book {
 
     @Id
     private Long id;
-    private String name;
+    private String title;
     private String author;
-    private int year;
-    private String genre;
+    private String description;
 
 }

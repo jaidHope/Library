@@ -1,30 +1,42 @@
 package com.example.Library.service;
 import com.example.Library.domain.Book;
 import com.example.Library.repository.BookRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookService {
+
     private final BookRepository bookRepository;
 
+    @Autowired
     public BookService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
 
-    public Book addBook(String name, String author) {
-        return bookRepository.addBook(name, author);
+    public boolean updateBook(Integer id, String description)
+    {
+        // Get the existing book from the database
+        Optional<Book> optionalBook = bookRepository.findById(id);
+        if (optionalBook.isPresent()) {
+            Book existingBook = optionalBook.get();
+            // Update the description of the existing book
+            existingBook.setDescription(description);
+            // Save the updated book to the database
+            bookRepository.save(existingBook);
+            return true;
+        } else {
+            // Handle case where book with given ID is not found
+            return false;
+        }
     }
 
-    public Book updateBook(Integer id)
+    public void deleteById(Integer id)
     {
-        return bookRepository.updateBook(id);
-    }
-
-    public void deleteBook(Integer id)
-    {
-        bookRepository.deleteBook(id);
+        bookRepository.deleteById(id);
     }
 
     public void save(Book book) {

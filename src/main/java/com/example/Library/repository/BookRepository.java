@@ -13,9 +13,8 @@ import java.util.List;
 public interface BookRepository extends JpaRepository<Book, Integer> {
 
     public Book getById(Integer id);
-    public Book addBook(String name, String author);
+    public Book save(Book book);
     public Book updateBook(Integer id);
-    public void deleteBook(Integer id);
 
     public List<Book> getAll();
 

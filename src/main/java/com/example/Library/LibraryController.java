@@ -23,26 +23,24 @@ public class LibraryController {
     }
 
     @GetMapping("/books/{id}")
-    public String getBook(@PathVariable Integer id) {
+    public Book getBook(@PathVariable Integer id) {
         Book book = bookService.getById(id);
-        return book.getName();
+        return book;
     }
 
     @PostMapping
     public void addBook(@RequestBody Book book) {
-        bookService.addBook(book.getName(), book.getAuthor());
         bookService.save(book);
     }
 
     @PutMapping("/{id}")
-    public void updateBook(@PathVariable Integer id, @RequestBody Book book) {
-        // Additional logic to ensure you're updating the correct book
-        bookService.save(book);
+    public void updateBook(@PathVariable Integer id, @RequestBody Book updatedBook) {
+        bookService.updateBook(id, updatedBook.getDescription());
     }
 
     @DeleteMapping("/{id}")
     public void deleteBook(@PathVariable Integer id) {
-        bookService.deleteBook(id);
+        bookService.deleteById(id);
     }
 
 
