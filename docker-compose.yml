@@ -11,6 +11,11 @@ services:
     volumes:
       - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
 
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      retries: 20
+      timeout: 10s
+      interval: 5s
 
   spring-boot-app:
     build: .
@@ -21,3 +26,13 @@ services:
       MYSQL_PORT: 3306
       MYSQL_DATABASE: library
       MYSQL_ROOT_PASSWORD: hello
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  wait-for-mysql:
+    image: alpine:latest
+    depends_on:
+      mysql:
+        condition: service_started
+    command: [ "sh", "-c", "until nc -z mysql 3306; do echo 'Waiting for MySQL to start'; sleep 5; done" ]
