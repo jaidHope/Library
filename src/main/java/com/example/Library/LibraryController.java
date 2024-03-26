@@ -1,14 +1,49 @@
 package com.example.Library;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.Library.domain.Book;
+import com.example.Library.service.BookService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class LibraryController {
 
-    @GetMapping("/")
-    public String index() {
-        return "Greetings from the Library!";
+    private final BookService bookService;
+
+    @Autowired
+    public LibraryController(BookService bookService) {
+        this.bookService = bookService;
     }
+
+    @GetMapping("/books")
+    public List<Book> getBooks() {
+        return bookService.getAll();
+    }
+
+    @GetMapping("/books/{id}")
+    public String getBook(@PathVariable Integer id) {
+        Book book = bookService.getById(id);
+        return book.getName();
+    }
+
+    @PostMapping
+    public void addBook(@RequestBody Book book) {
+        bookService.addBook(book.getName(), book.getAuthor());
+        bookService.save(book);
+    }
+
+    @PutMapping("/{id}")
+    public void updateBook(@PathVariable Integer id, @RequestBody Book book) {
+        // Additional logic to ensure you're updating the correct book
+        bookService.save(book);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteBook(@PathVariable Integer id) {
+        bookService.deleteBook(id);
+    }
+
 
 }

@@ -10,10 +10,13 @@ import java.util.List;
  * Repository class for the book database table.
  */
 @Repository
-public interface BookRepo extends JpaRepository<Book, Integer> {
+public interface BookRepository extends JpaRepository<Book, Integer> {
 
-    public Book getByName(String name);
-    public List<Book> getBooksByNameIsContainingIgnoreCase(String name);
-    public boolean existsByName(String name);
+    public Book getById(Integer id);
+    public Book addBook(String name, String author);
+    public Book updateBook(Integer id);
+    public void deleteBook(Integer id);
+
+    public List<Book> getAll();
 
 }
