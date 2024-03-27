@@ -1,0 +1,38 @@
+= Getting Started With the Library application
+
+The library service will be running at http://localhost:8080
+
+== Get books
+.request
+include::{snippets}/getAllBooks/http-request.adoc[]
+
+.response
+include::{snippets}/getAllBooks/http-response.adoc[]
+
+== Get book by ID
+.request
+include::{snippets}/getBookById/http-request.adoc[]
+
+.response
+include::{snippets}/getBookById/http-response.adoc[]
+
+== Add book
+.request
+include::{snippets}/addBook/http-request.adoc[]
+
+.response
+include::{snippets}/addBook/http-response.adoc[]
+
+== Update book
+.request
+include::{snippets}/updateBook/http-request.adoc[]
+
+.response
+include::{snippets}/updateBook/http-response.adoc[]
+
+== Delete book
+.request
+include::{snippets}/deleteBook/http-request.adoc[]
+
+.response
+include::{snippets}/deleteBook/http-response.adoc[]
