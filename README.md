@@ -18,22 +18,22 @@ Technical notes:
     - init-db.sql used to create the database and populate it with two dummy records upon startup
   - Spring Boot web app, with embedded Tomcat to run the library app
     - Built using Maven
-    - Heavily reliant on dependency injection
     - 3-layer MVC architecture (Controller, Service, Repository, Domain)
     - Lombok in use
     - Book.java:
       - entity class used to construct the table
       - also a data transfer object used for serialization/deserialization
-    - Documented API requests/responses using Restdoc
-    - Controller testing
+    - Documented API requests/responses using Restdoc (not 100% functional - need to get the generated adoc snippets rendering correctly in the index.html file. For now, see index.pdf)
+    - Basic Controller testing
 
 
 Future improvements:
 - Create a full frontend using angular
 - Extend application so it represents a real-life library management system
+- Improve Controller tests to return ResponseEntity, cover more edge cases
 
 How to run:
 1. Download the repo to a location of your choice
 2. Execute the following command `docker-compose up -d`
-3. Open the app on localhost:8080 and navigate to endpoint
+3. Open the app on localhost:8080 and navigate to endpoint (see index.pdf for a list of available endpoints/requests/responses)
  
