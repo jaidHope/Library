@@ -1,4 +1,4 @@
-Technical Assessment
+## Technical Assessment
 
 Overview :
 Using Java, write a web based RESTful API for a fictional public library that can perform the
@@ -12,7 +12,7 @@ your best thoughts on application architecture, API design, maintainability, etc
 Please return you submission as a link to a GitHub repo once completed. We look forward to seeing
 your results!
 
-Technical notes:
+### Technical notes:
 - Multi-service architecture created using Docker compose
   - Backend MySQL database called `library` containing one table, `book`
     - init-db.sql used to create the database and populate it with two dummy records upon startup
@@ -27,12 +27,12 @@ Technical notes:
     - Basic Controller testing
 
 
-Future improvements:
+### Future improvements:
 - Create a full frontend using angular
 - Extend application so it represents a real-life library management system
 - Improve Controller tests to return ResponseEntity, cover more edge cases
 
-How to run:
+### How to run:
 1. Download the repo to a location of your choice
 2. Execute the following command `docker-compose up -d`
 3. Open the app on localhost:8080 and navigate to endpoint (see index.pdf for a list of available endpoints/requests/responses)
